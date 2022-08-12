@@ -22,8 +22,14 @@ class CustomAppenderNssTest {
     @ParameterizedTest(name = "${0} devient ${1}")
     @CsvSource(
             {
-                    "2 94 03 75 120 005 22,* ** ** ** *** *** **",
-                    "294037512000522,***************"
+                    "numero secu 2 94 03 75 120 005 22,numero secu * ** ** ** *** *** **",
+                    "numero secu 2 94 03 2B 120 005 22,numero secu * ** ** ** *** *** **",
+                    "2 94 03 2A 120 005 22,* ** ** ** *** *** **",
+                    "numero secu 294037512000522,numero secu ***************",
+                    "294037512000522,***************",
+                    "194037512000522,***************",
+                    "numero secu 294037512000522,numero secu ***************",
+                    "numero secu 194037512000522,numero secu ***************"
             })
     void format(String email, String except) {
         StringBuilder stringBuilder = new StringBuilder();
