@@ -29,7 +29,8 @@ class CustomAppenderNssTest {
                     "294037512000522,***************",
                     "194037512000522,***************",
                     "numero secu 294037512000522,numero secu ***************",
-                    "numero secu 194037512000522,numero secu ***************"
+                    "numero secu 194037512000522,numero secu ***************",
+                    "numero secu 19403751AA00522,numero secu 19403751AA00522"
             })
     void format(String email, String except) {
         StringBuilder stringBuilder = new StringBuilder();
