@@ -1,6 +1,7 @@
-package org.stephane.appender;
+package org.stephane.appender.mask;
 
 import org.apache.commons.lang3.RegExUtils;
+import org.stephane.appender.mask.LogMasker;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +10,7 @@ public class EmailMasker implements LogMasker {
     private final Pattern emailFindPattern = Pattern.compile("([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)");
     private final Pattern emailMaskPattern = Pattern.compile("(?<=.)[^@](?=[^@]*?[^@]@)|(?:(?<=@.)|(?!^)\\G(?=[^@]*$)).(?=.*[^@]\\.)");
 
-    public void mask(StringBuffer stringBuffer, String maskChar) {
+    public void mask(StringBuilder stringBuffer, String maskChar) {
         Matcher matcher =  emailFindPattern.matcher(stringBuffer);
         if (matcher.find()) {
             String email = matcher.group(1);
