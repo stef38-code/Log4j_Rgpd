@@ -5,6 +5,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.pattern.ConverterKeys;
 import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 import org.apache.logging.log4j.core.pattern.PatternConverter;
+import org.stephane.appender.mask.CreditCardsMasker;
 import org.stephane.appender.mask.EmailMasker;
 import org.stephane.appender.mask.LogMasker;
 import org.stephane.appender.mask.NssMasker;
@@ -14,7 +15,7 @@ import java.util.List;
 @Plugin(name = "logmasker", category = PatternConverter.CATEGORY)
 @ConverterKeys({"msk"})
 public class CustomAppender extends LogEventPatternConverter {
-    private static final List<LogMasker> OPTIONS_TO_MASKER = List.of(new EmailMasker(), new NssMasker());
+    private static final List<LogMasker> OPTIONS_TO_MASKER = List.of(new EmailMasker(), new NssMasker(),new CreditCardsMasker());
 
     private CustomAppender(final String name, final String style) {
         super(name, style);

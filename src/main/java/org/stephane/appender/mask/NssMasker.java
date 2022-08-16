@@ -2,7 +2,7 @@ package org.stephane.appender.mask;
 
 import java.util.regex.Pattern;
 
-public class NssMasker extends LogMasker {
+public class NssMasker implements LogMasker {
 
     @Override
     public Pattern getFindPattern() {
@@ -11,7 +11,7 @@ public class NssMasker extends LogMasker {
 
     @Override
     public Pattern getMaskPattern() {
-        return Pattern.compile("(\\d|\\w)");
+        return Pattern.compile("(\\w)");
     }
 
 }
