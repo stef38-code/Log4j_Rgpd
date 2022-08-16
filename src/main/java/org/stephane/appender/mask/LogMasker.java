@@ -5,11 +5,23 @@ import org.apache.commons.lang3.RegExUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class LogMasker {
-    public abstract Pattern getFindPattern();
-    public abstract Pattern getMaskPattern();
+/**
+ * Classe de base pour la définition des masques
+ */
+public interface LogMasker {
+    /**
+     * Getter du pattern de recherche
+     * @return Pattern
+     */
+    public  Pattern getFindPattern();
 
-    public void mask(StringBuilder stringBuffer, String maskChar) {
+    /**
+     * Getter pattern de remplacement
+     * @return Pattern
+     */
+    public  Pattern getMaskPattern();
+
+    public default void mask(StringBuilder stringBuffer, String maskChar) {
         Matcher matcher = getFindPattern().matcher(stringBuffer);
         if (matcher.find()) {
             String group = matcher.group(0);

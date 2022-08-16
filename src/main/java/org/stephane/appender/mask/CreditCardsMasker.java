@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 /**
  * @see https://code.net.ua/regex-credit-cards/
  */
-public class CreditCardsMasker extends LogMasker {
+public class CreditCardsMasker implements LogMasker {
     @Override
     public Pattern getFindPattern() {
-        return Pattern.compile("(?:^|\\s)(?:[4|5|6|9]\\d{3})([ -]?)\\d{4}\\1\\d{4}\\1\\d{4}(?:$|\\s|\\.|\\,)");
+        return Pattern.compile("(?:^|\\s)(?:[2|4|5|6|9]\\d{3})([ -]?)\\d{4}\\1\\d{4}\\1\\d{4}(?:$|\\s|\\.|\\,)");
     }
 
     @Override

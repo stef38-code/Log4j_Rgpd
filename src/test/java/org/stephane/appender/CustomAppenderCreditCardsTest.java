@@ -30,11 +30,11 @@ class CustomAppenderCreditCardsTest {
                     "payment 4369559843305287,payment ****************"
 
             })
-    void visa(String email, String except) {
+    void visa(String actual, String except) {
         StringBuilder stringBuilder = new StringBuilder();
         LogEvent event = Log4jLogEvent.newBuilder() //
                 .setLevel(Level.DEBUG) //
-                .setMessage(new SimpleMessage(email)) //
+                .setMessage(new SimpleMessage(actual)) //
                 .build();
         customAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
@@ -51,11 +51,11 @@ class CustomAppenderCreditCardsTest {
                     "payment 5404363072774782,payment ****************"
 
             })
-    void master(String email, String except) {
+    void master(String actual, String except) {
         StringBuilder stringBuilder = new StringBuilder();
         LogEvent event = Log4jLogEvent.newBuilder() //
                 .setLevel(Level.DEBUG) //
-                .setMessage(new SimpleMessage(email)) //
+                .setMessage(new SimpleMessage(actual)) //
                 .build();
         customAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
@@ -79,11 +79,11 @@ class CustomAppenderCreditCardsTest {
                     "payment 9404363072774782,payment ****************"
 
             })
-    void prostir(String email, String except) {
+    void prostir(String actual, String except) {
         StringBuilder stringBuilder = new StringBuilder();
         LogEvent event = Log4jLogEvent.newBuilder() //
                 .setLevel(Level.DEBUG) //
-                .setMessage(new SimpleMessage(email)) //
+                .setMessage(new SimpleMessage(actual)) //
                 .build();
         customAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
@@ -92,20 +92,18 @@ class CustomAppenderCreditCardsTest {
     @ParameterizedTest(name = "{0} devient {1}")
     @CsvSource(
             {
-
                     "2404 3664 0602 4840,**** **** **** ****",
                     "2404-3658-7741-3532,****-****-****-****",
                     "9404363072774782,****************",
                     "Mir 2404 3664 0602 4840,Mir **** **** **** ****",
                     "Cards 2404-3658-7741-3532,Cards ****-****-****-****",
-                    "payment 2404363072774782,payment *****************"
-
+                    "payment 2404363072774782,payment ****************"
             })
-    void mir(String email, String except) {
+    void mir(String actual, String except) {
         StringBuilder stringBuilder = new StringBuilder();
         LogEvent event = Log4jLogEvent.newBuilder() //
                 .setLevel(Level.DEBUG) //
-                .setMessage(new SimpleMessage(email)) //
+                .setMessage(new SimpleMessage(actual)) //
                 .build();
         customAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
