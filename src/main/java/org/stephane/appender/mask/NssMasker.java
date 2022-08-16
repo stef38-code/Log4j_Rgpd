@@ -6,7 +6,7 @@ public class NssMasker implements LogMasker {
 
     @Override
     public Pattern getFindPattern() {
-        return Pattern.compile("([1|2])\\s*(\\d{2})\\s*(0\\d|1[0-2])\\s*(2[AB]|\\d{2})\\s*(\\d{3})\\s*(\\d{3})\\s*(\\d{2})\\s*");
+        return Pattern.compile("(^|\\s*|[^a-zA-Z0-9])([1|2])\\s*(\\d{2})\\s*(0\\d|1[0-2])\\s*(2[AB]|\\d{2})\\s*(\\d{3})\\s*(\\d{3})\\s*(\\d{2})($|\\s*|[^a-zA-Z0-9])");
     }
 
     @Override
