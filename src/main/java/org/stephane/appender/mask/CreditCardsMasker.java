@@ -8,11 +8,16 @@ import java.util.regex.Pattern;
 public class CreditCardsMasker implements LogMasker {
     @Override
     public Pattern getFindPattern() {
-        return Pattern.compile("(?:^|\\s*|[^a-zA-Z0-9])(?:[2|4|5|6|9]\\d{3})([ -]?)\\d{4}\\1\\d{4}\\1\\d{4}(?:$|\\s|\\.|\\,)");
+        return Pattern.compile(buildExpression());
     }
 
     @Override
     public Pattern getMaskPattern() {
         return Pattern.compile("(\\d)");
+    }
+    private String buildExpression(){
+        return ConstRegexp.DEBUT +
+                "(?:[2|4|5|6|9]\\d{3})([ -]?)\\d{4}\\1\\d{4}\\1\\d{4}" +
+                ConstRegexp.FIN;
     }
 }

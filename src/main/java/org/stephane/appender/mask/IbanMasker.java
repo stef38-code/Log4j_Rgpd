@@ -8,11 +8,16 @@ import java.util.regex.Pattern;
 public class IbanMasker implements LogMasker {
     @Override
     public Pattern getFindPattern() {
-        return Pattern.compile("(?:^|\\s*)(FR\\d{12}\\w{11}\\d{2})(?:$|\\s*|\\.|\\,)");
+        return Pattern.compile(buildExpression());
     }
 
     @Override
     public Pattern getMaskPattern() {
         return Pattern.compile("(\\d)");
+    }
+    private String buildExpression(){
+        return ConstRegexp.DEBUT +
+                "(FR\\d{12}\\w{11}\\d{2})" +
+                ConstRegexp.FIN;
     }
 }
