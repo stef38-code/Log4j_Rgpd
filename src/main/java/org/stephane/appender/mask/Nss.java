@@ -2,7 +2,7 @@ package org.stephane.appender.mask;
 
 import java.util.regex.Pattern;
 
-public class NssMasker implements LogMasker {
+public class Nss implements LogMasker {
 
     @Override
     public Pattern getFindPattern() {

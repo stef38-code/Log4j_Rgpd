@@ -9,11 +9,13 @@ montant remb
 login (Exception pour le login idGDI car il n’existe malheureusement pas d’ID technique autre que le véritable login du client)
 
 Possible :
-
 postale
+
+date naissance
+
+Fait:
 mail,
 tel
-date naissance
 IBAN
 num carte bancaire
 NIR (Num secu sociale)
