@@ -5,30 +5,34 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 import org.apache.logging.log4j.core.pattern.ConverterKeys;
 import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 import org.apache.logging.log4j.core.pattern.PatternConverter;
-import org.stephane.appender.mask.CreditCardsMasker;
-import org.stephane.appender.mask.EmailMasker;
-import org.stephane.appender.mask.LogMasker;
-import org.stephane.appender.mask.NssMasker;
+import org.apache.logging.log4j.util.PerformanceSensitive;
+import org.stephane.appender.mask.*;
 
 import java.util.List;
 
 @Plugin(name = "logmasker", category = PatternConverter.CATEGORY)
-@ConverterKeys({"msk"})
-public class CustomAppender extends LogEventPatternConverter {
-    private static final List<LogMasker> OPTIONS_TO_MASKER = List.of(new EmailMasker(), new NssMasker(),new CreditCardsMasker());
+@ConverterKeys({"rgpd"})
+@PerformanceSensitive("allocation")
+public class RgpdAppender extends LogEventPatternConverter {
+    private static final List<LogMasker> MASKERS = List.of(
+            new EmailMasker(),
+            new NssMasker(),
+            new CreditCardsMasker(),
+            new IbanMasker()
+    );
 
-    private CustomAppender(final String name, final String style) {
+    private RgpdAppender(final String name, final String style) {
         super(name, style);
     }
 
-    public static CustomAppender newInstance() {
-        return new CustomAppender("mask", "mask");
+    public static RgpdAppender newInstance() {
+        return new RgpdAppender("rgpd", "rgpd");
     }
 
     @Override
     public void format(final LogEvent event, final StringBuilder toAppendTo) {
         StringBuilder logMessage = new StringBuilder(event.getMessage().getFormattedMessage());
-        for (LogMasker masker : OPTIONS_TO_MASKER) {
+        for (LogMasker masker : MASKERS) {
             masker.mask(logMessage, "*");
         }
         toAppendTo.append(logMessage);

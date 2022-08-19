@@ -2,8 +2,10 @@ package org.stephane.appender.mask;
 
 import java.util.regex.Pattern;
 
-public class NssMasker implements LogMasker {
-
+/**
+ * @see https://code.net.ua/regex-iban/
+ */
+public class IbanMasker implements LogMasker {
     @Override
     public Pattern getFindPattern() {
         return Pattern.compile(buildExpression());
@@ -11,11 +13,11 @@ public class NssMasker implements LogMasker {
 
     @Override
     public Pattern getMaskPattern() {
-        return Pattern.compile("(\\w)");
+        return Pattern.compile("(\\d)");
     }
     private String buildExpression(){
         return ConstRegexp.DEBUT +
-                "([1|2])\\s*(\\d{2})\\s*(0\\d|1[0-2])\\s*(2[AB]|\\d{2})\\s*(\\d{3})\\s*(\\d{3})\\s*(\\d{2})" +
+                "(FR\\d{12}\\w{11}\\d{2})" +
                 ConstRegexp.FIN;
     }
 }
