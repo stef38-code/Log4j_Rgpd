@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
     <Properties>
-        <Property name="pattern">-> %d %-5p [%c{1}] : %mask%n </Property>
+        <Property name="pattern">-> %d %-5p [%c{1}] : %rgpd%n </Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">

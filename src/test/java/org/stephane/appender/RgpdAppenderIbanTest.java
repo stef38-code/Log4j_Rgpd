@@ -11,12 +11,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("Test Iban")
-class CustomAppenderIbanTest {
-    private CustomAppender customAppender;
+class RgpdAppenderIbanTest {
+    private RgpdAppender rgpdAppender;
 
     @BeforeEach
     void setUp() {
-        customAppender = CustomAppender.newInstance();
+        rgpdAppender = RgpdAppender.newInstance();
     }
 
     @ParameterizedTest(name = "{0} devient {1}")
@@ -59,7 +59,7 @@ class CustomAppenderIbanTest {
                 .setLevel(Level.DEBUG) //
                 .setMessage(new SimpleMessage(actual)) //
                 .build();
-        customAppender.format(event, stringBuilder);
+        rgpdAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
     }
     @ParameterizedTest(name = "{0} devient {1}")
@@ -102,7 +102,7 @@ class CustomAppenderIbanTest {
                 .setLevel(Level.DEBUG) //
                 .setMessage(new SimpleMessage(actual)) //
                 .build();
-        customAppender.format(event, stringBuilder);
+        rgpdAppender.format(event, stringBuilder);
         Assertions.assertThat(stringBuilder).isNotNull().hasToString(except);
     }
 }

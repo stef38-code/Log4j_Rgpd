@@ -10,7 +10,12 @@ public class EmailMasker implements LogMasker {
 
     @Override
     public Pattern getMaskPattern() {
-        return Pattern.compile("(?<=.)[^@](?=[^@]*?[^@]@)|(?:(?<=@.)|(?!^)\\G(?=[^@]*$)).(?=.*[^@]\\.)");
+        return Pattern.compile("(?<=\\w)" +
+                "[^@]" +
+                "(?=[^@]*?[^@]@)|" +
+                "(?:(?<=@.)|(?!^)\\G" +
+                "(?=[^@]*$))." +
+                "(?=.*[^@]\\.)");
     }
     private String buildExpression(){
         return ConstRegexp.DEBUT +

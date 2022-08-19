@@ -26,12 +26,15 @@ public interface LogMasker {
     public default void mask(StringBuilder stringBuffer, String maskChar) {
         Matcher matcher = getFindPattern().matcher(stringBuffer);
         if (matcher.find()) {
-/*            System.out.println(this.getClass().getCanonicalName());
+            /*System.out.println(this.getClass().getCanonicalName());
             System.out.println("stringBuffer = " + stringBuffer + ", maskChar = " + maskChar);*/
             String group = matcher.group(0);
+            /*System.out.println("group = |" + group);*/
             String masked = RegExUtils.replaceAll(group, getMaskPattern(), maskChar);
+            /*System.out.println("masked = |" + masked);*/
             int idx = stringBuffer.indexOf(group);
             stringBuffer.replace(idx, idx + group.length(), masked);
+            /*System.out.println("stringBuffer = " + stringBuffer);*/
         }
     }
 }
